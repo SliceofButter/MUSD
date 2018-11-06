@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.*
+import android.content.Intent
 
 class MainActivity : AppCompatActivity() {
 
@@ -29,17 +30,17 @@ class MainActivity : AppCompatActivity() {
 
         val button = findViewById<Button>(R.id.addButton)
         button.setOnClickListener {
-            var name = findViewById<EditText>(R.id.movieName)
+            val name = findViewById<EditText>(R.id.movieName)
+            var desc = findViewById<EditText>(R.id.editText4)
+            var date = findViewById<EditText>(R.id.editText5)
             if(name.text.isNullOrEmpty())
             {
                 name.setError("Field Empty!Enter a valid movie name!")
             }
-            var desc = findViewById<EditText>(R.id.editText4)
             if(desc.text.isNullOrEmpty())
             {
                 desc.setError("Field Empty! Enter a Description!")
             }
-            var date = findViewById<EditText>(R.id.editText5)
             if(date.text.isNullOrEmpty())
             {
                 date.setError("Field Empty! Enter a Date!")
@@ -77,6 +78,36 @@ class MainActivity : AppCompatActivity() {
                 else {
                     Toast.makeText(this, message, Toast.LENGTH_LONG).show()
                 }
+            }
+        }
+        val view =  findViewById<Button>(R.id.viewButton)
+        view.setOnClickListener {
+            val name = findViewById<EditText>(R.id.movieName)
+            var desc = findViewById<EditText>(R.id.editText4)
+            var date = findViewById<EditText>(R.id.editText5)
+            var radiocheck = findViewById<RadioGroup>(R.id.radio_group)
+            var radioid:Int = radiocheck.checkedRadioButtonId
+            val radio1: RadioButton = findViewById(radioid)
+            if(check.isChecked) {
+                val no = "No"
+                val intent = Intent(this, MainActivity2::class.java)
+                intent.putExtra("moviename", name.text.toString())
+                intent.putExtra("description", desc.text.toString())
+                intent.putExtra("date", date.text.toString())
+                intent.putExtra("language", radio1.text.toString())
+                intent.putExtra("age", no)
+                startActivity(intent)
+            }
+            else if(check.isChecked == false)
+            {
+                val yes = "Yes"
+                val intent = Intent(this, MainActivity2::class.java)
+                intent.putExtra("moviename", name.text.toString())
+                intent.putExtra("description", desc.text.toString())
+                intent.putExtra("date", date.text.toString())
+                intent.putExtra("language", radio1.text.toString())
+                intent.putExtra("age", yes)
+                startActivity(intent)
             }
         }
 
