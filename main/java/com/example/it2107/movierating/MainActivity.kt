@@ -110,6 +110,13 @@ class MainActivity : AppCompatActivity() {
                 startActivity(intent)
             }
         }
+        val rate = findViewById<Button>(R.id.rateButton)
+        rate.setOnClickListener{
+            val name = findViewById<EditText>(R.id.movieName)
+            val intent = Intent(this, MainActivity3::class.java)
+            intent.putExtra("moviename", name.text.toString())
+            startActivity(intent)
+        }
 
     }
 
