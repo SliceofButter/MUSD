@@ -7,9 +7,15 @@
     android:orientation="vertical"
     tools:context=".MainActivity2">
 
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="125dp"
+        android:layout_height="120dp"
+        app:srcCompat="@drawable/movie" />
+
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Title:" />
 
@@ -66,4 +72,5 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="24sp" />
+
 </LinearLayout>

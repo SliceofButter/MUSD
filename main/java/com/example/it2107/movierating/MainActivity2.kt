@@ -2,7 +2,6 @@ package com.example.it2107.movierating
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.EditText
 import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_main.*
 
