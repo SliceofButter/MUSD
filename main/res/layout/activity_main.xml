@@ -121,16 +121,5 @@
         android:layout_height="wrap_content"
         android:text="Add Movie" />
 
-    <Button
-        android:id="@+id/viewButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="View Movie Details" />
-
-    <Button
-        android:id="@+id/rateButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Rate Movie" />
 
 </LinearLayout>

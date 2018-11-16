@@ -9,8 +9,6 @@ class MainActivity3 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main3)
-        val title = findViewById<TextView>(R.id.textView7)
-        val ttext:String = intent.extras.getString("moviename")
-        title.text = "Enter your review for this movie: " + ttext
+
     }
 }

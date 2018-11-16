@@ -80,43 +80,8 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
-        val view =  findViewById<Button>(R.id.viewButton)
-        view.setOnClickListener {
-            val name = findViewById<EditText>(R.id.movieName)
-            var desc = findViewById<EditText>(R.id.editText4)
-            var date = findViewById<EditText>(R.id.editText5)
-            var radiocheck = findViewById<RadioGroup>(R.id.radio_group)
-            var radioid:Int = radiocheck.checkedRadioButtonId
-            val radio1: RadioButton = findViewById(radioid)
-            if(check.isChecked) {
-                val no = "No"
-                val intent = Intent(this, MainActivity2::class.java)
-                intent.putExtra("moviename", name.text.toString())
-                intent.putExtra("description", desc.text.toString())
-                intent.putExtra("date", date.text.toString())
-                intent.putExtra("language", radio1.text.toString())
-                intent.putExtra("age", no)
-                startActivity(intent)
-            }
-            else if(check.isChecked == false)
-            {
-                val yes = "Yes"
-                val intent = Intent(this, MainActivity2::class.java)
-                intent.putExtra("moviename", name.text.toString())
-                intent.putExtra("description", desc.text.toString())
-                intent.putExtra("date", date.text.toString())
-                intent.putExtra("language", radio1.text.toString())
-                intent.putExtra("age", yes)
-                startActivity(intent)
-            }
-        }
-        val rate = findViewById<Button>(R.id.rateButton)
-        rate.setOnClickListener{
-            val name = findViewById<EditText>(R.id.movieName)
-            val intent = Intent(this, MainActivity3::class.java)
-            intent.putExtra("moviename", name.text.toString())
-            startActivity(intent)
-        }
+
+
 
     }
 

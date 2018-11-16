@@ -23,7 +23,8 @@
         android:id="@+id/movie"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="24sp" />
+        android:text="Venom"
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/textView4"
@@ -35,7 +36,8 @@
         android:id="@+id/overview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="24sp" />
+        android:text="When Eddie Brock"
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/textView9"
@@ -47,7 +49,8 @@
         android:id="@+id/language"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="24sp" />
+        android:text="English"
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/textView11"
@@ -59,7 +62,8 @@
         android:id="@+id/date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="24sp" />
+        android:text="03-10-2018"
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/textView13"
@@ -71,6 +75,7 @@
         android:id="@+id/suitable"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="24sp" />
+        android:text="Yes"
+        android:textSize="18sp" />
 
 </LinearLayout>
