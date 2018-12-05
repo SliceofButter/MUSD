@@ -25,8 +25,19 @@
                 android:name=".MainActivity3"
                 android:parentActivityName=".MainActivity2">
         </activity>
-        <activity android:name=".MainActivity4"
-                  android:parentActivityName=".MainActivity3">>
+        <activity
+                android:name=".MainActivity4"
+                android:parentActivityName=".MainActivity3">
+            >
+        </activity>
+        <activity android:name=".MainActivity5"
+                  android:parentActivityName=".MainActivity"
+                  android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
         </activity>
     </application>
 
