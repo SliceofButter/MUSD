@@ -42,10 +42,13 @@
             android:layout_height="wrap_content"
             android:text="Review:"/>
 
+    <RatingBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/ratingBar2" android:numStars="5" android:isIndicator="true"/>
     <TextView
             android:text="No Reviews yet. \n Long press here to add your review."
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:id="@+id/review"/>
+            android:layout_height="wrap_content" android:id="@+id/review" android:textSize="18sp"/>
     <TextView
             android:id="@+id/textView9"
             android:layout_width="match_parent"

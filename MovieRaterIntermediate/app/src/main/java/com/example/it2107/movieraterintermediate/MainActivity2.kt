@@ -75,16 +75,19 @@ class MainActivity2 : AppCompatActivity() {
                     movie.setDate(date.text.toString())
                     movie.setLanguage(radio1.text.toString())
                     movie.setSuit("No")
-                    if(check2.isChecked) {
-                        movie.setlangused("Language Used")
+                    if(check2.isChecked && check3.isChecked == false) {
+                        movie.setVio("true")
+                        movie.setSuit("No(Violence)")
                     }
-                    else if(check3.isChecked) {
-                        movie.setVio("Violence")
+                    else if(check3.isChecked && check2.isChecked == false) {
+                        movie.setlangused("true")
+                        movie.setSuit("No(Language Used)")
                     }
                     else if (check2.isChecked && check3.isChecked)
                     {
-                        movie.setlangused("Language Used")
-                        movie.setVio("Violence")
+                        movie.setlangused("true")
+                        movie.setVio("true")
+                        movie.setSuit("No(Violence & Language Used)")
                     }
                     startActivity(intent)
                     }
