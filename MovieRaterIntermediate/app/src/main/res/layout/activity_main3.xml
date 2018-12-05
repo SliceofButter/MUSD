@@ -36,7 +36,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="18sp"/>
+    <TextView
+            android:id="@+id/textView14"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Review:"/>
 
+    <TextView
+            android:text="No Reviews yet. \n Long press here to add your review."
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:id="@+id/review"/>
     <TextView
             android:id="@+id/textView9"
             android:layout_width="match_parent"

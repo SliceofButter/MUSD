@@ -7,6 +7,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.*
+import java.io.Serializable
 
 class MainActivity2 : AppCompatActivity() {
 
@@ -67,24 +68,36 @@ class MainActivity2 : AppCompatActivity() {
             if(radioid != -1) {
                 val radio1: RadioButton = findViewById(radioid)
                 if(check.isChecked) {
-                    val no = "No"
-                    val intent = Intent(this, MainActivity3::class.java)
-                    intent.putExtra("moviename", name.text.toString())
-                    intent.putExtra("description", desc.text.toString())
-                    intent.putExtra("date", date.text.toString())
-                    intent.putExtra("language", radio1.text.toString())
-                    intent.putExtra("age", no)
+                    val movie = applicationContext as Movie
+                    val intent = Intent(applicationContext, MainActivity3::class.java)
+                    movie.setTitle(name.text.toString())
+                    movie.setDesc(desc.text.toString())
+                    movie.setDate(date.text.toString())
+                    movie.setLanguage(radio1.text.toString())
+                    movie.setSuit("No")
+                    if(check2.isChecked) {
+                        movie.setlangused("Language Used")
+                    }
+                    else if(check3.isChecked) {
+                        movie.setVio("Violence")
+                    }
+                    else if (check2.isChecked && check3.isChecked)
+                    {
+                        movie.setlangused("Language Used")
+                        movie.setVio("Violence")
+                    }
                     startActivity(intent)
-                }
+                    }
+
                 else if(check.isChecked == false)
                 {
-                    val yes = "Yes"
-                    val intent = Intent(this, MainActivity3::class.java)
-                    intent.putExtra("moviename", name.text.toString())
-                    intent.putExtra("description", desc.text.toString())
-                    intent.putExtra("date", date.text.toString())
-                    intent.putExtra("language", radio1.text.toString())
-                    intent.putExtra("age", yes)
+                    val movie = applicationContext as Movie
+                    val intent = Intent(applicationContext, MainActivity3::class.java)
+                    movie.setTitle(name.text.toString())
+                    movie.setDesc(desc.text.toString())
+                    movie.setDate(date.text.toString())
+                    movie.setLanguage(radio1.text.toString())
+                    movie.setSuit("Yes")
                     startActivity(intent)
                 }
             }

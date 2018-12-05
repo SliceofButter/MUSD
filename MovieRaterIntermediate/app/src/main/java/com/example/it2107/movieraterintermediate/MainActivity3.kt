@@ -10,22 +10,39 @@ class MainActivity3 : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main3)
 
-        val movie = findViewById<TextView>(R.id.movie)
-        val mtext:String = intent.extras.getString("moviename")
-        val overview = findViewById<TextView>(R.id.overview)
-        val otext:String = intent.extras.getString("description")
-        val date = findViewById<TextView>(R.id.date)
-        val dtext:String = intent.extras.getString("date")
-        val language = findViewById<TextView>(R.id.language)
-        val ltext:String = intent.extras.getString("language")
-        val age = findViewById<TextView>(R.id.suitable)
-        val atext:String = intent.extras.getString("age")
+        val movie = applicationContext as Movie
 
-        movie.text = mtext
-        overview.text = otext
-        date.text = dtext
-        language.text = ltext
-        age.text = atext
+        val moviet = findViewById<TextView>(R.id.movie)
+        val overview = findViewById<TextView>(R.id.overview)
+        val date = findViewById<TextView>(R.id.date)
+        val language = findViewById<TextView>(R.id.language)
+        val age = findViewById<TextView>(R.id.suitable)
+
+
+        moviet.text = movie.getTitle()
+        overview.text = movie.getDesc()
+        date.text = movie.getDate()
+        language.text = movie.getLanguage()
+        if(movie.getSuit() == "No")
+        {
+            if(movie.getlangused() == "Language Used") {
+                age.text = movie.getSuit()
+            }
+            else if(movie.getVio() == "Violence")
+            {
+                age.text = movie.getSuit() + "(" + movie.getVio() + ")"
+            }
+            else if (movie.getlangused() == "Language Used" && movie.getVio() == "Violence" )
+            {
+                age.text = movie.getSuit() + "(" + movie.getlangused() + ", " + movie.getVio()+")"
+            }
+
+        }
+        else
+        {
+            age.text = movie.getSuit()
+        }
+
     }
 
 }
