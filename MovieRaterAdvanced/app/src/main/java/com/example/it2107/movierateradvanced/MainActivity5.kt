@@ -11,29 +11,35 @@ import kotlinx.android.synthetic.main.activity_main5.*
 
 class MainActivity5 : AppCompatActivity() {
 
+    var checkViolence = ""
+    var checkLanguage = ""
+    var checkSuitable = ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main5)
         val movie = applicationContext as Movie
+        val position = intent.getIntExtra("position",0)
+        val movieDeets = movie.getMovie().elementAt(position.toInt())
         val name = findViewById<EditText>(R.id.movieName)
         var desc = findViewById<EditText>(R.id.editText4)
         var date = findViewById<EditText>(R.id.editText5)
-        name.setText(movie.getTitle())
-        desc.setText(movie.getDesc())
-        date.setText(movie.getDate())
-        if(movie.getLanguage()=="English")
+        name.setText(movieDeets.movieTitle)
+        desc.setText(movieDeets.movieDesc)
+        date.setText(movieDeets.releaseDate)
+        if(movieDeets.lang=="English")
         {
             engButton1.isChecked == true
         }
-        else if(movie.getLanguage()=="Chinese")
+        else if(movieDeets.lang=="Chinese")
         {
             chButton1.isChecked == true
         }
-        else if(movie.getLanguage()=="Malay")
+        else if(movieDeets.lang=="Malay")
         {
             malayButton1.isChecked == true
         }
-        else if(movie.getLanguage()=="Tamil")
+        else if(movieDeets.lang=="Tamil")
         {
             tamilButton1.isChecked == true
         }
@@ -41,17 +47,17 @@ class MainActivity5 : AppCompatActivity() {
         check2.visibility = View.GONE
         val check3 = findViewById<CheckBox>(R.id.checkBox4)
         check3.visibility = View.GONE
-        if(movie.getlangused()== "true")
+        if(movieDeets.langused== "Language Used")
         {
             check3.visibility = View.VISIBLE
             check3.isChecked
         }
-        else if (movie.getVio()=="true")
+        else if (movieDeets.violent=="Violence")
         {
             check2.visibility = View.VISIBLE
             check2.isChecked
         }
-        else if (movie.getVio() == "true" && movie.getlangused() == "true") {
+        else if (movieDeets.langused== "Language Used" &&movieDeets.violent=="Violence") {
             check3.visibility = View.VISIBLE
             check2.visibility = View.VISIBLE
             check3.isChecked
@@ -107,39 +113,48 @@ class MainActivity5 : AppCompatActivity() {
             if(radioid != -1) {
                 val radio1: RadioButton = findViewById(radioid)
                 if(check.isChecked) {
-                    val movie = applicationContext as Movie
-                    val intent = Intent(applicationContext, MainActivity3::class.java)
-                    movie.setTitle(name.text.toString())
-                    movie.setDesc(desc.text.toString())
-                    movie.setDate(date.text.toString())
-                    movie.setLanguage(radio1.text.toString())
-                    movie.setSuit("No")
                     if(check2.isChecked && check3.isChecked == false) {
-                        movie.setVio("true")
-                        movie.setSuit("No(Violence)")
+                        checkViolence ="Violence"
+                        checkLanguage = ""
                     }
                     else if(check3.isChecked && check2.isChecked == false) {
-                        movie.setlangused("true")
-                        movie.setSuit("No(Language Used)")
+                        checkLanguage= "Language Used"
+                        checkViolence = ""
                     }
                     else if (check2.isChecked && check3.isChecked)
                     {
-                        movie.setlangused("true")
-                        movie.setVio("true")
-                        movie.setSuit("No(Violence & Language Used)")
+                        checkViolence ="Violence"
+                        checkLanguage= "Language Used"
                     }
+                    val movie = applicationContext as Movie
+                    val position = intent.getIntExtra("position",0)
+                    val movieDeets = movie.getMovie().elementAt(position.toInt())
+                    movieDeets.movieTitle = movieName.text.toString()
+                    movieDeets.movieDesc = desc.text.toString()
+                    movieDeets.releaseDate = date.text.toString()
+                    movieDeets.lang = radio1.text.toString()
+                    movieDeets.suitable = "No"
+                    movieDeets.langused = checkLanguage
+                    movieDeets.violent = checkViolence
+
+                    val intent = Intent(applicationContext, MainActivity3::class.java)
                     startActivity(intent)
                 }
 
                 else if(check.isChecked == false)
                 {
                     val movie = applicationContext as Movie
+                    val position = intent.getIntExtra("position",0)
+                    val movieDeets = movie.getMovie().elementAt(position.toInt())
+                    movieDeets.movieTitle = movieName.text.toString()
+                    movieDeets.movieDesc = desc.text.toString()
+                    movieDeets.releaseDate = date.text.toString()
+                    movieDeets.lang = radio1.text.toString()
+                    movieDeets.suitable = "Yes"
+                    movieDeets.langused = checkLanguage
+                    movieDeets.violent = checkViolence
                     val intent = Intent(applicationContext, MainActivity3::class.java)
-                    movie.setTitle(name.text.toString())
-                    movie.setDesc(desc.text.toString())
-                    movie.setDate(date.text.toString())
-                    movie.setLanguage(radio1.text.toString())
-                    movie.setSuit("Yes")
+
                     startActivity(intent)
                 }
             }

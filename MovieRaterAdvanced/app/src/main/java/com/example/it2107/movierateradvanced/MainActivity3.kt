@@ -22,6 +22,7 @@ class MainActivity3 : AppCompatActivity() {
 
 
         val movie = applicationContext as Movie
+        val movieDeets = movie.getMovie().last()
 
         val moviet = findViewById<TextView>(R.id.movie)
         val overview = findViewById<TextView>(R.id.overview)
@@ -30,36 +31,36 @@ class MainActivity3 : AppCompatActivity() {
         val age = findViewById<TextView>(R.id.suitable)
 
 
-        moviet.text = movie.getTitle()
-        overview.text = movie.getDesc()
-        date.text = movie.getDate()
-        language.text = movie.getLanguage()
-        if(movie.getSuit() == "No")
+        moviet.text = movieDeets.movieTitle
+        overview.text = movieDeets.movieDesc
+        date.text = movieDeets.releaseDate
+        language.text = movieDeets.lang
+        if(movieDeets.suitable == "No")
         {
-            if(movie.getlangused() == "true") {
-                age.text = movie.getSuit()
+            if(movieDeets.langused == "Language Used" && movieDeets.violent =="") {
+                age.text = movieDeets.suitable +"(" + movieDeets.langused+ ")"
             }
-            else if(movie.getVio() == "true")
+            else if(movieDeets.violent == "Violence" && movieDeets.langused == "")
             {
-                age.text = movie.getSuit()
+                age.text = movieDeets.suitable +"(" + movieDeets.violent+ ")"
             }
-            else if (movie.getlangused() == "true" && movie.getVio() == "true" )
+            else if (movieDeets.langused == "Language Used" && movieDeets.violent =="Violence" )
             {
-                age.text = movie.getSuit()
+                age.text = movieDeets.suitable +"(" + movieDeets.langused+", "+movieDeets.violent+ ")"
             }
 
         }
         else
         {
-            age.text = movie.getSuit()
+            age.text = movieDeets.suitable
         }
 
-        if(movie.getrStars()>0F)
+        if(movieDeets.rateStars>0F)
         {
             ratingBar2.layoutParams.height=ActionBar.LayoutParams.WRAP_CONTENT
-            ratingBar2.rating = movie.getrStars()
+            ratingBar2.rating = movieDeets.rateStars
             ratingBar2.visibility = View.VISIBLE
-            review.text = movie.getMReview()
+            review.text = movieDeets.review
         }
 
         registerForContextMenu(review)

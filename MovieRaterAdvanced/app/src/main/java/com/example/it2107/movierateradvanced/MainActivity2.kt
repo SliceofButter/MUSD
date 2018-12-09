@@ -11,6 +11,11 @@ import java.io.Serializable
 
 class MainActivity2 : AppCompatActivity() {
 
+    var checkViolence = ""
+    var checkLanguage = ""
+    var checkSuitable = ""
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main2)
@@ -68,27 +73,30 @@ class MainActivity2 : AppCompatActivity() {
             if(radioid != -1) {
                 val radio1: RadioButton = findViewById(radioid)
                 if(check.isChecked) {
-                    val movie = applicationContext as Movie
-                    val intent = Intent(applicationContext, MainActivity3::class.java)
-                    movie.setTitle(name.text.toString())
-                    movie.setDesc(desc.text.toString())
-                    movie.setDate(date.text.toString())
-                    movie.setLanguage(radio1.text.toString())
-                    movie.setSuit("No")
                     if(check2.isChecked && check3.isChecked == false) {
-                        movie.setVio("true")
-                        movie.setSuit("No(Violence)")
+                        checkViolence ="Violence"
+                        checkLanguage = ""
                     }
                     else if(check3.isChecked && check2.isChecked == false) {
-                        movie.setlangused("true")
-                        movie.setSuit("No(Language Used)")
+                        checkLanguage= "Language Used"
+                        checkViolence = ""
                     }
                     else if (check2.isChecked && check3.isChecked)
                     {
-                        movie.setlangused("true")
-                        movie.setVio("true")
-                        movie.setSuit("No(Violence & Language Used)")
+                        checkViolence ="Violence"
+                        checkLanguage= "Language Used"
                     }
+                    val movie = applicationContext as Movie
+                    val intent = Intent(applicationContext, MainActivity3::class.java)
+                    val movieDeets = movieItem(name.text.toString(),
+                    desc.text.toString(),
+                    radio1.text.toString(),
+                    date.text.toString(),
+                     "No",
+                        checkLanguage,
+                        checkViolence)
+
+                    movie.addMovie(movieDeets)
                     startActivity(intent)
                 }
 
@@ -96,11 +104,14 @@ class MainActivity2 : AppCompatActivity() {
                 {
                     val movie = applicationContext as Movie
                     val intent = Intent(applicationContext, MainActivity3::class.java)
-                    movie.setTitle(name.text.toString())
-                    movie.setDesc(desc.text.toString())
-                    movie.setDate(date.text.toString())
-                    movie.setLanguage(radio1.text.toString())
-                    movie.setSuit("Yes")
+                    val movieDeets = movieItem(name.text.toString(),
+                        desc.text.toString(),
+                        radio1.text.toString(),
+                        date.text.toString(),
+                        "No",
+                        checkLanguage,
+                        checkViolence)
+                    movie.addMovie(movieDeets)
                     startActivity(intent)
                 }
             }
