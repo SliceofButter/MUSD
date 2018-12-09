@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <group
+            android:id="@+id/UnAuthenticateSettings"
+            android:enabled="true" android:visible="true" >
+        <item
+                android:id="@+id/menu_save" android:orderInCategory="201"
+                app:showAsAction="ifRoom" android:title="Save"/>
+        <item
+                android:id="@+id/menu_cancel" android:orderInCategory="202"
+                app:showAsAction="ifRoom" android:title="Cancel"/>
+    </group>
+
+</menu>
