@@ -37,6 +37,8 @@ class MainActivity3 : AppCompatActivity() {
         language.text = movieDeets.lang
         if(movieDeets.suitable == "No")
         {
+            age.text = movieDeets.suitable
+
             if(movieDeets.langused == "Language Used" && movieDeets.violent =="") {
                 age.text = movieDeets.suitable +"(" + movieDeets.langused+ ")"
             }
@@ -50,7 +52,7 @@ class MainActivity3 : AppCompatActivity() {
             }
 
         }
-        else
+        else if(movieDeets.suitable == "Yes")
         {
             age.text = movieDeets.suitable
         }

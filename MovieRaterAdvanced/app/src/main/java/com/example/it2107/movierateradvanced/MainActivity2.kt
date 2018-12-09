@@ -108,7 +108,7 @@ class MainActivity2 : AppCompatActivity() {
                         desc.text.toString(),
                         radio1.text.toString(),
                         date.text.toString(),
-                        "No",
+                        "Yes",
                         checkLanguage,
                         checkViolence)
                     movie.addMovie(movieDeets)
