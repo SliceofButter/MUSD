@@ -41,8 +41,10 @@ class MainActivity : AppCompatActivity() {
         override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
             val row = inflater.inflate(R.layout.listviewlayout, parent, false)
             val movieitem = getItem(position) as movieItem
-            val moviename = row.findViewById(R.id.titleName) as TextView
+            val moviename = row.findViewById<TextView>(R.id.titleName)
+            val thumbnail = row.findViewById<ImageView>(R.id.thumbnail)
             moviename.text = movieitem.movieTitle
+            thumbnail.setImageResource(R.drawable.movie)
 
             return row
         }

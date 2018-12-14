@@ -88,6 +88,9 @@ class MainActivity5 : AppCompatActivity() {
 
         if(item?.itemId == R.id.menu_save )
         {
+            val movie = applicationContext as Movie
+            val position = intent.getIntExtra("position",0)
+            val movieDeets = movie.getMovie().elementAt(position.toInt())
             val name = findViewById<EditText>(R.id.movieName)
             var desc = findViewById<EditText>(R.id.editText4)
             var date = findViewById<EditText>(R.id.editText5)
@@ -126,9 +129,10 @@ class MainActivity5 : AppCompatActivity() {
                         checkViolence ="Violence"
                         checkLanguage= "Language Used"
                     }
-                    val movie = applicationContext as Movie
-                    val position = intent.getIntExtra("position",0)
-                    val movieDeets = movie.getMovie().elementAt(position.toInt())
+
+
+                    val intent = Intent(applicationContext, MainActivity3::class.java)
+                    intent.putExtra("position", position)
                     movieDeets.movieTitle = movieName.text.toString()
                     movieDeets.movieDesc = desc.text.toString()
                     movieDeets.releaseDate = date.text.toString()
@@ -137,15 +141,14 @@ class MainActivity5 : AppCompatActivity() {
                     movieDeets.langused = checkLanguage
                     movieDeets.violent = checkViolence
 
-                    val intent = Intent(applicationContext, MainActivity3::class.java)
                     startActivity(intent)
                 }
 
                 else if(check.isChecked == false)
                 {
-                    val movie = applicationContext as Movie
-                    val position = intent.getIntExtra("position",0)
-                    val movieDeets = movie.getMovie().elementAt(position.toInt())
+
+                    val intent = Intent(applicationContext, MainActivity3::class.java)
+                    intent.putExtra("position", position)
                     movieDeets.movieTitle = movieName.text.toString()
                     movieDeets.movieDesc = desc.text.toString()
                     movieDeets.releaseDate = date.text.toString()
@@ -153,7 +156,7 @@ class MainActivity5 : AppCompatActivity() {
                     movieDeets.suitable = "Yes"
                     movieDeets.langused = checkLanguage
                     movieDeets.violent = checkViolence
-                    val intent = Intent(applicationContext, MainActivity3::class.java)
+
 
                     startActivity(intent)
                 }

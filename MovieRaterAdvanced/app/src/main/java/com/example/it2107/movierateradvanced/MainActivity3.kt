@@ -22,7 +22,16 @@ class MainActivity3 : AppCompatActivity() {
 
 
         val movie = applicationContext as Movie
-        val movieDeets = movie.getMovie().last()
+        var position = intent.getIntExtra("position", -1)
+        val movieDeets : movieItem
+        if(position > 0 || position == 0)
+        {
+            movieDeets = movie.getMovie().elementAt(position)
+        }
+        else
+        {
+            movieDeets = movie.getMovie().last()
+        }
 
         val moviet = findViewById<TextView>(R.id.movie)
         val overview = findViewById<TextView>(R.id.overview)
