@@ -18,6 +18,11 @@ class MainActivity : AppCompatActivity() {
         if(movie.getMovie().isNotEmpty()) {
             val adapter = movieAdapter(applicationContext, movie.getMovie())
             listView.adapter = adapter
+            listView.setOnItemClickListener { _, _, position, _ ->
+                val intent = Intent(this,MainActivity3::class.java)
+                intent.putExtra("position",position)
+                startActivity(intent)
+            }
         }
 
 
