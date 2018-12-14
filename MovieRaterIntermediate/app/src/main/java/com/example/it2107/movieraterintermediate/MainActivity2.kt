@@ -106,6 +106,23 @@ class MainActivity2 : AppCompatActivity() {
             }
 
         }
+        else if(item?.itemId == R.id.menu_clear)
+        {
+            val name = findViewById<EditText>(R.id.movieName)
+            var desc = findViewById<EditText>(R.id.editText4)
+            var date = findViewById<EditText>(R.id.editText5)
+            val check2 = findViewById<CheckBox>(R.id.checkBox2)
+            val check3 = findViewById<CheckBox>(R.id.checkBox4)
+            val check = findViewById<CheckBox>(R.id.checkBox)
+            var engbutton = findViewById<RadioButton>(R.id.engButton)
+            name.text.clear()
+            desc.text.clear()
+            date.text.clear()
+            check2.isChecked = false
+            check3.isChecked = false
+            check.isChecked = false
+            engbutton.isChecked = true
+        }
         return super.onOptionsItemSelected(item)
     }
 }
